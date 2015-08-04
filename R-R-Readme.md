@@ -32,7 +32,7 @@ make sure you point RStudio to: (don't use sh.exe)
 If you are using the git bash shell in Windows, modify the shortcut on your desktop
 to point to your working directory.  properties > Start in:
 
-Here is proof I actuallly did this.
+Here is proof I actually did this.
 
 ![RStudio Screenshot](./figures/ProofOfRstudio.png)
 
