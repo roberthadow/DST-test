@@ -15,3 +15,5 @@ https://github.com/roberthadow/datasciencecoursera.git
 There may be another way to do it, but the first time through, in order to
 get origin to be datasciencecoursera, I had to use git bash.
 
+I mispelled the address the first time.
+
