@@ -17,3 +17,5 @@ get origin to be datasciencecoursera, I had to use git bash.
 
 I mispelled the address the first time. And the second time.
 
+Still it's not perfect.
+
