@@ -1,22 +1,38 @@
 ---
 title: "M-M-Markdown"
 author: "Robert Hadow"
-date: "August 3, 2015"
+date: "August 4, 2015"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
-summary(cars)
+This is an R Markdown document created in RStudio. You can look yourself at
+```
+https://github.com/roberthadow/DST-test.git
 ```
 
-You can also embed plots, for example:
+I have found the cave under the lake and slain Grendel's dam.
 
-```{r, echo=FALSE}
-plot(cars)
+![Grendel's Dam](./figures/grendels_dam.jpg)
+
+### Lessons learned:
+
+If you use the git bash shell
 ```
+ git config --list
+```
+is your friend. Make sure you include the full url, like this:
+```
+ git config --local remote.origin.url https://github.com/roberthadow/DST-test.git
+```
+If you are using Windows and you don't install git, github, and RStudio in order,
+make sure you point RStudio to: (don't use sh.exe) 
+```
+ C:/Program Files/Git/bin/git.exe
+```
+If you are using the git bash shell in Windows, modify the shortcut on your desktop
+to point to your working directory.  properties > Start in:
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Here is proof I actuallly did this.
+
+![RStudio Screenshot](./figures/ProofOfRstudio.png)
+
