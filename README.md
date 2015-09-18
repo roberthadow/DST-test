@@ -1,7 +1,7 @@
 ---
 title: "Getdata Assignment 1"
 author: "Robert Hadow"
-date: "September 8, 2015"
+date: "September 17, 2015"
 output: html_document
 ---
 
