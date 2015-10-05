@@ -2,13 +2,17 @@
 
 # comments are found in the codebook
 
+suppressPackageStartupMessages(library(plyr))
+suppressPackageStartupMessages(library(dplyr))
+options(width = 120)
+
 targetDir <- dictDir <- "./codebook"
-if(!file.exists("targetDir")) dir.create("targetDir")
+if(!file.exists(targetDir)) dir.create(targetDir)
 fileUrl <- "http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI HAR Dataset.names"
 zipFile = paste(targetDir, "herus.html", sep = "/")
 
 targetDir <- dataDir <- "./data"
-if(!file.exists("targetDir")) dir.create("targetDir")
+if(!file.exists(targetDir)) dir.create(targetDir)
 fileUrl <-
         "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 zipFile = paste(dataDir, "UCIHAR.zip", sep = "/")
@@ -25,11 +29,13 @@ success <- file.rename(from, to)
 
 csvFiles <- list.files(dataDir, pattern = "*.txt", recursive = TRUE,
                        full.names = TRUE)
-# Read Data
+
+
+# read_data
 #
 csvFiles <- list.files(dataDir, pattern = "*.txt", recursive = TRUE,
                        full.names = TRUE)
-newObjects <- gsub(".txt","", csvFiles)
+newObjects <- gsub(".txt", "", csvFiles)
 newObjects <- gsub("./data/", "", newObjects)
 
 for (i in 1:length(csvFiles)) {
@@ -37,7 +43,6 @@ for (i in 1:length(csvFiles)) {
                read.csv(csvFiles[i],
                         header = FALSE,
                         stringsAsFactors = FALSE,
-                        # row.names = NULL,
                         na.strings = "NA",
                         sep = ""))
 }
@@ -47,7 +52,11 @@ for (i in 1:length(newObjects)) {
         dataPoints = dataPoints + (nrow(get(newObjects[i])) * ncol(get(newObjects[i])))
 }
 
+
+
 ## Tidy Data
+
+
 
 # organize and apply column names to the test data set
 features[, 2]  <- gsub("\\()","", features[, 2])
@@ -77,19 +86,16 @@ X_train <- X_train[, selectedColumns$V1]
 # combine the test and train datasets
 ucihar <- rbind(X_test, X_train)
 
-# write csv file for main dataset
-write.table(ucihar, file = "ucihar.csv", sep = ",",
-            eol = "\n", na = "NA", dec = ".", row.names = FALSE,
-            col.names = TRUE, qmethod = c("escape", "double"),
-            fileEncoding = "")
-
 # write csv file for activity explanation
 write.table(activity_labels, file = "activities.csv", sep = ",",
             eol = "\n", na = "NA", dec = ".", row.names = FALSE,
             col.names = TRUE, qmethod = c("escape", "double"),
             fileEncoding = "")
 
-## Create Codebook
+dataPoints = nrow(ucihar) * (ncol(ucihar) - 2)
+
+# Create Codebook
+
 
 uciharTable <- rep("ucihar", ncol(ucihar))
 uciharAttribute <- colnames(ucihar)
@@ -99,7 +105,7 @@ uciharDescription[substr(uciharDescription,1,1) == "t"] <- "time domain summary 
 ucihar.dict <- data.frame(uciharTable, uciharAttribute, uciharDescription)
 
 uciharTable <- "subject"
-uciharAttribute <- "subject"
+uciharAttribute <- "subject between 18 and 48"
 uciharDescription <- "Subjects by number only"
 temp <- data.frame(uciharTable, uciharAttribute, uciharDescription)
 ucihar.dict = rbind(ucihar.dict, temp)
@@ -118,7 +124,17 @@ ucihar.dict = rbind(ucihar.dict, temp)
 
 colnames(ucihar.dict) <- c("Table", "Attribute", "Description")
 
-# Codebook
 
-print(ucihar.dict, include.rownames = FALSE)
+#  Print Codebook
+
+print(ucihar.dict, include.rownames = FALSE, max.levels = null, width = 1200)
+
+ucihar %>% group_by(activity_code, subject) %>% summarise_each(funs(mean)) -> ucihar_summary
+
+# write csv file for summary dataset
+write.table(ucihar_summary, file = "UCIHAR_summary.csv", sep = ",",
+            eol = "\n", na = "NA", dec = ".", row.names = FALSE,
+            col.names = TRUE, qmethod = c("escape", "double"),
+            fileEncoding = "")
+
 

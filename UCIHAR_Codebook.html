@@ -10,7 +10,6 @@
 
 <meta name="author" content="Robert Hadow" />
 
-<meta name="date" content="2015-09-17" />
 
 <title>UCI HAR Data Set</title>
 
@@ -38,6 +37,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+<link href="data:text/css,body%20%7B%0A%20%20width%3A%201000px%3B%0A%20%20max%2Dwidth%3A%201000px%3B%0A%20%20margin%3A%20auto%3B%0A%20%20padding%3A%201em%3B%0A%20%20line%2Dheight%3A%2020px%20%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -64,14 +64,14 @@ img {
 <div id="header">
 <h1 class="title">UCI HAR Data Set</h1>
 <h4 class="author"><em>Robert Hadow</em></h4>
-<h4 class="date"><em>September 17, 2015</em></h4>
+<h4 class="date"><em>5 October 2015</em></h4>
 </div>
 
 
 <p>========================================</p>
 <div id="study-design" class="section level1">
 <h1><span class="header-section-number">1</span> Study Design</h1>
-<p>The UCI HAR dataset described herein was generated in a series of observations of human physical acitivity using a smartphone’s inbuilt accelerometer and gyroscope. These observations of thirty volunteers in six activities were collected in Genoa in 2012.</p>
+<p>The UCI HAR dataset described herein was generated in a series of observations of human physical activity using a smartphone’s inbuilt accelerometer and gyroscope. These observations of thirty volunteers in six activities were collected in Genoa in 2012.</p>
 <p>Two detectors of this type can directly measure the following at a rate of fifty observations per second:</p>
 <ul>
 <li>linear acceleration in three dimensions</li>
@@ -79,13 +79,13 @@ img {
 </ul>
 <p>Using time-series of these observations, an analyst may calculate other measures, including:</p>
 <ul>
-<li>axial acceration in three dimensions</li>
-<li>jerk in three dimensions (time derivative of accleration)</li>
-<li>angular jerk in three dimensions (time derivative of angular accleration)</li>
+<li>axial acceleration in three dimensions</li>
+<li>jerk in three dimensions (time derivative of acceleration)</li>
+<li>angular jerk in three dimensions (time derivative of angular acceleration)</li>
 <li>decomposition of these measures in the frequency domain (Fourier Transform)</li>
 </ul>
 <p>The data is further analyzed for measures of central tendency and error. In total, 561 measures are generated.</p>
-<p>This data was delivered to us after the first round of calculation and analysis. It includes 18 million data points in 26 data files. There are two additional files of human-readable description. The folowing data files were used reorganized here are:</p>
+<p>This data was delivered to us after the first round of calculation and analysis. It includes 18 million data points in 26 data files. There are two additional files of human-readable description. The following data files were used and reorganized here:</p>
 <ul>
 <li>features - descriptions of summary observations data</li>
 <li>X_test - summary observation data</li>
@@ -104,22 +104,22 @@ img {
 <li>30 subjects</li>
 <li>77 summary measures</li>
 </ul>
-<p>Principles of tidy data organization limited us to presentations in two dimensions: columns, describing atrributes of the data, and rows, describing particular observations. A tidy format should allow use of the data with the minumum amount of manipulation,based on the puposes for which the data will be analyzed. We designed our data set to allow its use with the following operations, listed here in decreasing order of priority:</p>
+<p>Principles of tidy data organization limited us to presentations in two dimensions: columns, describing attributes of the data, and rows, describing particular observations. A tidy format should allow use of the data with the minimum amount of manipulation,based on the purposes for which the data will be analyzed. We designed our data set to allow its use with the following operations, listed here in decreasing order of priority:</p>
 <ol style="list-style-type: decimal">
 <li>viewing as is (no manipulation)</li>
 <li>summary measures, including sum, mean, median,etc</li>
 <li>grouping and subsetting (logical rearrangement, row-wise)</li>
-<li>reordering (physical rearangement, row-wise)</li>
+<li>reordering (physical rearrangement, row-wise)</li>
 <li>numerical manipulation (modifying or adding columns)</li>
-<li>disassembly and reassemby of the data block</li>
+<li>disassembly and reassembly of the data block</li>
 </ol>
 <div id="ease-of-viewing" class="section level2">
 <h2><span class="header-section-number">2.1</span> Ease of Viewing</h2>
-<p>To accomodate viewing (goal 1) we put exercise and subject leftmost in the tableau.<br />Insofar as we anticipated the user would rearrange the rwo order to meet his or her needs, we left the order as it was delivered to us, first test data then training data (because that was alphabetical if for no other reason).</p>
+<p>To accommodate viewing (goal 1) we put exercise and subject leftmost in the tableau.<br />Insofar as we anticipated the user would rearrange the row order to meet his or her needs, we left the order as it was delivered to us, first test data then training data (because that was alphabetical if for no other reason).</p>
 </div>
 <div id="accomodate-summary-measures" class="section level2">
 <h2><span class="header-section-number">2.2</span> Accomodate Summary Measures</h2>
-<p>All values of a particular type, i.e. “tBodyAcc-mean” are in the same column, accomodating summary measures. We stripped parentheses from the column names. Because the parentheses were common, they added no information, but they did add significantly to the file size.</p>
+<p>All values of a particular type, i.e. “tBodyAcc-mean” are in the same column (a “wide” or “un-stacked” layout), accommodating summary measures. We stripped parentheses from the column names. Because the parentheses were common, they added no information, but they did add significantly to the file size.</p>
 </div>
 <div id="accomodate-grouping" class="section level2">
 <h2><span class="header-section-number">2.3</span> Accomodate Grouping</h2>
@@ -131,23 +131,27 @@ img {
 </div>
 <div id="numerical-manipulation" class="section level2">
 <h2><span class="header-section-number">2.5</span> Numerical Manipulation</h2>
-<p>We chose to leave activity as a numerical attribute in the main data table. This keeps the entire table numeric data. Having one character column in a 79 column table, we thought, is unecessary complexity, and adds no information. We provided the activity codes as a separate table.</p>
+<p>We chose to leave activity as a numerical attribute in the main data table. This keeps the entire table numeric data. Having one character column in a 79 column table, we thought, is unnecessary complexity and adds no information. We provided the activity codes as a separate table.</p>
 </div>
 <div id="wholesale-changes-to-data-structure" class="section level2">
 <h2><span class="header-section-number">2.6</span> Wholesale Changes to Data Structure</h2>
-<p>A two-table structure is far easierto manipulate than the 26 we started with.</p>
+<p>A two-table structure is far easier to manipulate than the 26 we started with.</p>
 </div>
 </div>
 <div id="details-of-data-conversion" class="section level1">
 <h1><span class="header-section-number">3</span> Details of Data Conversion</h1>
 <p>We downloaded the raw data and reference materials according to the script below:</p>
-<pre class="r"><code>targetDir &lt;- dictDir &lt;- &quot;./codebook&quot;
-if(!file.exists(&quot;targetDir&quot;)) dir.create(&quot;targetDir&quot;)
+<pre class="r"><code>suppressPackageStartupMessages(library(plyr))
+suppressPackageStartupMessages(library(dplyr))
+options(width = 120)
+
+targetDir &lt;- dictDir &lt;- &quot;./codebook&quot;
+if(!file.exists(targetDir)) dir.create(targetDir)
 fileUrl &lt;- &quot;http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI HAR Dataset.names&quot;
 zipFile = paste(targetDir, &quot;herus.html&quot;, sep = &quot;/&quot;)
 
 targetDir &lt;- dataDir &lt;- &quot;./data&quot;
-if(!file.exists(&quot;targetDir&quot;)) dir.create(&quot;targetDir&quot;)
+if(!file.exists(targetDir)) dir.create(targetDir)
 fileUrl &lt;-
         &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip&quot;
 zipFile = paste(dataDir, &quot;UCIHAR.zip&quot;, sep = &quot;/&quot;)
@@ -168,8 +172,8 @@ csvFiles &lt;- list.files(dataDir, pattern = &quot;*.txt&quot;, recursive = TRUE
 <h2><span class="header-section-number">3.1</span> Reading Data Files into R</h2>
 <p>We read all of the data files into R. We used this opportunity to check the parameters for this conversion and to see which files were relevant.</p>
 <pre class="r"><code>csvFiles &lt;- list.files(dataDir, pattern = &quot;*.txt&quot;, recursive = TRUE,
-                                               full.names = TRUE)
-newObjects &lt;- gsub(&quot;.txt&quot;,&quot;&quot;, csvFiles)
+                full.names = TRUE)
+newObjects &lt;- gsub(&quot;.txt&quot;, &quot;&quot;, csvFiles)
 newObjects &lt;- gsub(&quot;./data/&quot;, &quot;&quot;, newObjects)
 
 for (i in 1:length(csvFiles)) {
@@ -177,7 +181,6 @@ for (i in 1:length(csvFiles)) {
                read.csv(csvFiles[i],
                 header = FALSE,
                 stringsAsFactors = FALSE,
-                # row.names = NULL,
                 na.strings = &quot;NA&quot;,
                 sep = &quot;&quot;))
 }
@@ -198,7 +201,7 @@ for (i in 1:length(newObjects)) {
 <li>organize and apply column names to the test data set</li>
 <li>organize subject data, append it to the observations</li>
 <li>organize exercise data, append it to the observations</li>
-<li>redact the data,elininating unwanted columns</li>
+<li>redact the data,eliminating unwanted columns</li>
 <li>combine the test and train datasets</li>
 </ul>
 <pre class="r"><code># organize and apply column names to the test data set
@@ -229,17 +232,13 @@ X_train &lt;- X_train[, selectedColumns$V1]
 # combine the test and train datasets
 ucihar &lt;- rbind(X_test, X_train)
 
-# write csv file for main dataset
-write.table(ucihar, file = &quot;ucihar.csv&quot;, sep = &quot;,&quot;,
-            eol = &quot;\n&quot;, na = &quot;NA&quot;, dec = &quot;.&quot;, row.names = FALSE,
-            col.names = TRUE, qmethod = c(&quot;escape&quot;, &quot;double&quot;),
-            fileEncoding = &quot;&quot;)
-
 # write csv file for activity explanation
 write.table(activity_labels, file = &quot;activities.csv&quot;, sep = &quot;,&quot;,
             eol = &quot;\n&quot;, na = &quot;NA&quot;, dec = &quot;.&quot;, row.names = FALSE,
             col.names = TRUE, qmethod = c(&quot;escape&quot;, &quot;double&quot;),
-            fileEncoding = &quot;&quot;)</code></pre>
+            fileEncoding = &quot;&quot;)
+
+dataPoints = nrow(ucihar) * (ncol(ucihar) - 2)</code></pre>
 </div>
 <div id="create-codebook" class="section level2">
 <h2><span class="header-section-number">3.4</span> Create Codebook</h2>
@@ -277,7 +276,8 @@ colnames(ucihar.dict) &lt;- c(&quot;Table&quot;, &quot;Attribute&quot;, &quot;De
 <p>The documentation that came with the raw data contains descriptive attribute names from which a reader may surmise the origin and use of the associated data elements. For more detailed explanations, the user is referred to the Non Linear Complex Systems Laboratory, Genoa, activity <a href="mailto:recognition@smartlab.ws">recognition@smartlab.ws</a>.</p>
 <p>The data dictionary that follows was generated from the UCIHAR data tables. Similarly named attributes may be used as primary keys.</p>
 <p>Trailing digits refer to raw data not included in this set.</p>
-<pre class="r"><code>print(ucihar.dict, include.rownames = FALSE)</code></pre>
+<p>All data in the set is normalized -1.00 - 1.00.</p>
+<pre class="r"><code>print(ucihar.dict, include.rownames = FALSE, max.levels = null, width = 1200)</code></pre>
 <pre><code>##              Table                      Attribute              Description
 ## 1           ucihar                  activity_code            activity_code
 ## 2           ucihar                        subject                  subject
@@ -371,6 +371,19 @@ colnames(ucihar.dict) &lt;- c(&quot;Table&quot;, &quot;Attribute&quot;, &quot;De
 ## 90 activity_labels                       activity                  SITTING
 ## 91 activity_labels                       activity                 STANDING
 ## 92 activity_labels                       activity                   LAYING</code></pre>
+<div id="summary-dataset---ucihar_summary" class="section level2">
+<h2><span class="header-section-number">4.1</span> Summary Dataset - UCIHAR_summary</h2>
+<p>UCIHAR contains 7.9302310^{5} measures. It has 10299 rows of data.</p>
+<p>UCIHAR_summary is a summary of UCIHAR. It provides the means of the data in UCIHAR.</p>
+<pre class="r"><code>ucihar %&gt;% group_by(activity_code, subject) %&gt;% summarise_each(funs(mean)) -&gt; ucihar_summary
+
+
+# write csv file for summary dataset
+write.table(ucihar_summary, file = &quot;UCIHAR_summary.csv&quot;, sep = &quot;,&quot;,
+            eol = &quot;\n&quot;, na = &quot;NA&quot;, dec = &quot;.&quot;, row.names = FALSE,
+            col.names = TRUE, qmethod = c(&quot;escape&quot;, &quot;double&quot;),
+            fileEncoding = &quot;&quot;)</code></pre>
+</div>
 </div>
 
 
