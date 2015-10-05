@@ -132,7 +132,7 @@ print(ucihar.dict, include.rownames = FALSE, max.levels = null, width = 1200)
 ucihar %>% group_by(activity_code, subject) %>% summarise_each(funs(mean)) -> ucihar_summary
 
 # write csv file for summary dataset
-write.table(ucihar_summary, file = "UCIHAR_summary.csv", sep = ",",
+write.table(ucihar_summary, file = "UCIHAR_summary.txt", sep = ",",
             eol = "\n", na = "NA", dec = ".", row.names = FALSE,
             col.names = TRUE, qmethod = c("escape", "double"),
             fileEncoding = "")
