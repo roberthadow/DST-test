@@ -118,4 +118,3 @@ UCIHAR contains `r I(dataPoints)` measures.  It has `r I(nrow(ucihar))` rows of 
 UCIHAR_summary is a summary of UCIHAR.  It provides the means of the data in UCIHAR. 
 
 
-

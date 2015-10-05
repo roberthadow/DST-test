@@ -137,4 +137,3 @@ write.table(ucihar_summary, file = "UCIHAR_summary.csv", sep = ",",
             col.names = TRUE, qmethod = c("escape", "double"),
             fileEncoding = "")
 
-
